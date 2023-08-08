@@ -52,3 +52,44 @@ get("/dice/5/4") do
 
   erb(:five_four)
 end
+
+# /app.rb
+
+get("/dynamic/50/6") do
+  @rolls = []
+
+  50.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:flexible)
+end
+
+get("/dynamic/:number_of_dice/6") do
+
+ @num_dice = params.fetch("alice").to_i
+  @rolls = []
+
+  @num_dice.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:flexible)
+end
+
+
+get("/dice/50/6") do
+  @rolls = []
+
+  50.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:fifty_six)
+end
